@@ -10,29 +10,83 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-12">
-					<h2 class="text-center">Test</h2>
+				<div class="jumbotron col-12">
+					<h2 class="text-center">Learn Math</h2>
 				</div>
-			</div>
-
-			<div class="row">
-				<p class="col-lg-3" id="num1">7</p>
-				<p class="col-lg-3" id="operand">+</p>
-				<p class="col-lg-3" id="num2">5</p>
 			</div>
 		</div>
 
+		<br/>
 
-		<p>this is a git test</p>
-		<p>test two</p>
-		<p>Brady test one</p>
+		<div class="container jumbotron">
+			<div class="text-center">
+				<h3>WHAT IS YOUR NAME?</h3>
+			</div>
+			<div class="row">
+		  		<input type="text" class="col-sm form-control " id="FName" placeholder="First Name">
+				 <input type="text" class="col-sm form-control " id="LName" placeholder="Last Name">
+			</div>
+		</div>
 
-		<span id="scoreboard">Score Here</span>
-		<input id="guessInput" step=1>
-		<div id="messageBox">Test Message</div>
-		<button id="submitBtn">Submit</button>
-		<button id="resetBtn">Reset</button>
-		<button id="skipBtn">Skip</button>
+		<div class="text-danger text-center" id="messageBox">Test Message</div>
+		<div class="container text-center ">
+			<div class="row">
+				<p class="jumbotron col-sm" id="num1">7</p>
+				<p class="jumbotron col-sm" id="operand">+</p>
+				<p class="jumbotron col-sm" id="num2">5</p>
+			</div>
+		</div>
+		
+		<br/>
+
+		<div class="container">
+			<div class="row">
+			<div class="col-md text-center">	
+				<span  id="scoreboard">Score Here</span>
+				<input class=" col-sm form-control " id="guessInput" placeholder="user input">
+			</div>
+		</div>
+
+		
+
+				<div class="container jumbotron text-right">
+					<button class="btn btn-success col-sm-3" id="submitBtn">Submit</button>
+					<button class="btn btn-warning col-sm-2" id="skipBtn">Skip</button>
+					<button class="btn btn-danger col-sm-1" id="resetBtn">Reset</button>	
+				</div>
+		</div>
 
 	</body>
 </html>
+
+
+
+
+
+<!-- To be moved to css file!!! -->
+<style>
+
+		#messageBox{
+			font-size: 50px;
+			font-weight: 600;
+		}
+		#scoreboard{
+			border: solid black 3px;
+		}
+
+		#num1{
+			margin: 10px;
+			font-size: 45px;
+			font-weight: 700;	
+		}
+		#operand{
+			margin: 10px;
+			font-size: 45px;
+			font-weight: 700;
+		}
+		#num2{
+			margin: 10px;
+			font-size: 45px;
+			font-weight: 700;
+		}
+	</style>
