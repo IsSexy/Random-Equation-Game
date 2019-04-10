@@ -8,6 +8,7 @@ const guess = document.querySelector('#guessInput');
 const submitBtn = document.querySelector('#submitBtn');
 const skipBtn = document.querySelector('#skipBtn');
 const resetBtn = document.querySelector('#resetBtn');
+const maxNumber = 100;
 
 //Helper methods
 function randomInt(max)
@@ -37,11 +38,17 @@ function RandomEquationGame(first, last)
 	this.playerName = first + " " + last;
 	this.score = 0;
 	this.totalGuesses = 0;
+	this.operands = ['+', '-', '*', '/'];
+
+	this.beginGame();
 }
 
 RandomEquationGame.prototype.beginGame = function()
 {
 	scoreboard.innerHTML = score;
+	num1.innerHTML = randomInt(maxNumber);
+	operand.innerHTML = this.operands[randomInt(this.operands.length)];
+	num2.innerHTML = randomInt(maxNumber);
 }
 
 RandomEquationGame.prototype.add = function()
