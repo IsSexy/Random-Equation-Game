@@ -9,6 +9,8 @@ const submitBtn = document.querySelector('#submitBtn');
 const skipBtn = document.querySelector('#skipBtn');
 const resetBtn = document.querySelector('#resetBtn');
 const maxNumber = 100;
+const fName = document.querySelector('#FName');
+const lName = document.querySelector('#LName');
 
 //Helper methods
 function randomInt(max)
@@ -19,18 +21,20 @@ function randomInt(max)
 //Event functions
 function skip()
 {
-
 }
 
 function reset()
 {
+}
 
+function submitAnswer()
+{
 }
 
 //Event bindings
 skipBtn.onclick = skip;
 resetBtn.onclick = reset;
-submitBtn.onclick = submit;
+submitBtn.onclick = submitAnswer;
 
 //Initializing RandomEquationGame constructor and prototype methods.
 function RandomEquationGame(first, last)
@@ -39,13 +43,14 @@ function RandomEquationGame(first, last)
 	this.score = 0;
 	this.totalGuesses = 0;
 	this.operands = ['+', '-', '*', '/'];
+	messageBox.innerHTML = this.playerName;
 
 	this.beginGame();
 }
 
 RandomEquationGame.prototype.beginGame = function()
 {
-	scoreboard.innerHTML = score;
+	scoreboard.innerHTML = this.score;
 	num1.innerHTML = randomInt(maxNumber);
 	operand.innerHTML = this.operands[randomInt(this.operands.length)];
 	num2.innerHTML = randomInt(maxNumber);
@@ -73,5 +78,7 @@ RandomEquationGame.prototype.multiply = function()
 
 RandomEquationGame.prototype.evaluate = function()
 {
-
+	return true;
 }
+
+new RandomEquationGame('Brady', 'Ward');
