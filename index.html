@@ -18,7 +18,7 @@
 
 		<br/>
 
-		<div class="container jumbotron">
+		<div class="container jumbotron" id='nameSelection'>
 			<div class="text-center">
 				<h3>WHAT IS YOUR NAME?</h3>
 			</div>
@@ -26,24 +26,36 @@
 		  		<input type="text" class="col-sm form-control " id="FName" placeholder="First Name">
 				 <input type="text" class="col-sm form-control " id="LName" placeholder="Last Name">
 			</div>
-		</div>
 
-		<div class="text-danger text-center" id="messageBox">Test Message</div>
-		<div class="container text-center ">
+			<br/>
+
 			<div class="row">
-				<p class="jumbotron col-sm" id="num1">7</p>
-				<p class="jumbotron col-sm" id="operand">+</p>
-				<p class="jumbotron col-sm" id="num2">5</p>
+				<button id="submitName" class="btn btn-success col-sm-2 offset-5">Submit</button>
 			</div>
 		</div>
-		
-		<br/>
 
-		<div class="container">
+		
+		
+		
+
+		<div class="container" id="gameboard">
+				<div class="text-danger text-center" id="nameBox">Test Message</div>
+			<div class="text-danger text-center" id="messageBox">Test Message</div>
+
+			<div class="container text-center ">
+				<div class="row">
+					<p class="jumbotron col-sm" id="num1">7</p>
+					<p class="jumbotron col-sm" id="operand">+</p>
+					<p class="jumbotron col-sm" id="num2">5</p>
+				</div>
+			</div>
+
+			<br/><hr/>
+
 			<div class="row">
 			<div class="col-md text-center">	
 				<span  id="scoreboard">Score Here</span>
-				<input class=" col-sm form-control " id="guessInput" placeholder="user input">
+				<input class=" col-sm-4 offset-4 form-control " id="guessInput" placeholder="Enter your guess!">
 			</div>
 		</div>
 
@@ -52,7 +64,7 @@
 				<div class="container jumbotron text-right">
 					<button class="btn btn-success col-sm-3" id="submitBtn">Submit</button>
 					<button class="btn btn-warning col-sm-2" id="skipBtn">Skip</button>
-					<button class="btn btn-danger col-sm-1" id="resetBtn">Reset</button>	
+					<button class="btn btn-danger col-sm-2" id="resetBtn">Reset</button>	
 				</div>
 		</div>
 
@@ -66,7 +78,7 @@
 <!-- To be moved to css file!!! -->
 <style>
 
-		#messageBox{
+		#nameBox{
 			font-size: 50px;
 			font-weight: 600;
 		}
