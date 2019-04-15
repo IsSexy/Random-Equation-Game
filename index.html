@@ -50,22 +50,22 @@
 				</div>
 			</div>
 
-			<br/><hr/><br/>
+			<br/><hr/>
 
 			<div class="row">
-				<div class="col-md text-center">	
-					<span  id="scoreboard">Score Here</span>
-					<br/>
-					<input class=" col-sm form-control " id="guessInput" placeholder="Enter your guess!">
+			<div class="col-md text-center">	
+				<span  id="scoreboard">Score Here</span>
+				<input class=" offset-4 col-sm-4 form-control " id="guessInput" placeholder="Enter your guess!">
+			</div>
+		</div>
+
+		
+
+				<div class="container jumbotron text-right">
+					<button class="btn btn-success col-sm-3" id="submitBtn">Submit</button>
+					<button class="btn btn-warning col-sm-2" id="skipBtn">Skip</button>
+					<button class="btn btn-danger col-sm-2" id="resetBtn">Reset</button>	
 				</div>
-			
-			</div>
-		<br/>
-			<div class="container jumbotron text-right">
-				<button class="btn btn-success col-sm-3" id="submitBtn">Submit</button>
-				<button class="btn btn-warning col-sm-2" id="skipBtn">Skip</button>
-				<button class="btn btn-danger col-sm-2" id="resetBtn">Reset</button>	
-			</div>
 		</div>
 
 	</body>
@@ -77,17 +77,15 @@
 
 <!-- To be moved to css file!!! -->
 <style>
+
 		#nameBox{
 			font-size: 50px;
 			font-weight: 600;
 		}
 		#scoreboard{
 			border: solid black 3px;
-			padding:20px;
 		}
-		#guessInput{
-			margin-top: 25px;
-		}
+
 		#num1{
 			margin: 10px;
 			font-size: 45px;
