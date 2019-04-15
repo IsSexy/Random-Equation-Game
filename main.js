@@ -93,21 +93,22 @@ function RandomEquationGame()
 	else
 	{
 		this.playerName = localStorage.getItem('playerName');
-		this.score = localStorage.getItem('playerScore');
-		this.totalGuesses = localStorage.getItem('totalGuesses');
-		this.num1 = localStorage.getItem('num1');
-		this.num2 = localStorage.getItem('num2');
+		this.score = Number(localStorage.getItem('playerScore'));
+		this.totalGuesses = Number(localStorage.getItem('totalGuesses'));
+		this.num1 = Number(localStorage.getItem('num1'));
+		this.num2 = Number(localStorage.getItem('num2'));
 		this.operands = ['+', '-', '*', '/'];
 		nameBox.innerHTML = this.playerName;
 		num1.innerHTML = localStorage.getItem('num1');
 		num2.innerHTML = localStorage.getItem('num2');
 		operand.innerHTML = localStorage.getItem('currentOperand');
+		messageBox.innerHTML = `Welcome back ${this.playerName}!`;
 	}
-	messageBox.innerHTML = 'Good luck!';
 }
 
 RandomEquationGame.prototype.beginGame = function()
 {
+	messageBox.innerHTML = 'Good luck!';
 	this.refreshGame();
 }
 
