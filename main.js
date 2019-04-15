@@ -15,10 +15,7 @@ const gameBoard = document.querySelector('#gameboard');
 const nameSelection = document.querySelector('#nameSelection');
 const nameBox = document.querySelector('#nameBox');
 const submitNameBtn = document.querySelector('#submitName');
-let adding = RandomEquationGame.prototype.add;
-let mul = RandomEquationGame.prototype.multiply;
-let div = RandomEquationGame.prototype.divide;
-let sub = RandomEquationGame.prototype.subtract;
+let theGame = null;
 
 //Helper methods
 function randomInt(max)
@@ -46,25 +43,32 @@ function reset()
 
 function submitAnswer()
 {
-	let adding = new RandomEquationGame();
-	let mul = new RandomEquationGame();
-	let div = new RandomEquationGame();
-	let sub = new RandomEquationGame();
-	if(guessInput.value === adding || guessInput.value === sub || guessInput.value === mul || guessInput.value === div){
-			return console.log("it works");	
-		}else{
-			return console.log("nope");
-		}
-		
+	let theOperand = operand.innerHTML;
+	
+	switch(theOperand)
+	{
+		case '+':
+			console.log(theGame.add());
+			break;
+		case '-':
+			console.log(theGame.subtract());
+			break;
+		case '*':
+			console.log(theGame.multiply());
+			break;
+		case '/':
+			console.log(theGame.divide());
+			break;
+	}
 
+	theGame.refreshGame();
 }
 
 function submitName()
 {
 	gameBoard.style.visibility ='visible';
 	nameSelection.parentNode.removeChild(nameSelection);
-	new RandomEquationGame(fName.value, lName.value);
-
+	theGame = new RandomEquationGame(fName.value, lName.value);
 }
 
 
@@ -82,7 +86,6 @@ function RandomEquationGame(first, last)
 	this.totalGuesses = 0;
 	this.operands = ['+', '-', '*', '/'];
 	nameBox.innerHTML = this.playerName;
-	//gameBoard.style.visibility ='hidden';
 
 	this.beginGame();
 }
