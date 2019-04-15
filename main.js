@@ -51,8 +51,7 @@ function submitAnswer()
 	let div = new RandomEquationGame();
 	let sub = new RandomEquationGame();
 	if(guessInput.value === adding || guessInput.value === sub || guessInput.value === mul || guessInput.value === div){
-			return console.log("it works");
-			
+			return console.log("it works");	
 		}else{
 			return console.log("nope");
 		}
