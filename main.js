@@ -43,25 +43,40 @@ function reset()
 
 function submitAnswer()
 {
+	guessInput.focus();
 	let theOperand = operand.innerHTML;
-	
 	switch(theOperand)
 	{
 		case '+':
+			if(guessInput.value === theGame.add()){
 			console.log(theGame.add());
+			}else{
+				messageBox.innerHTML = "wrong";
+			}
 			break;
 		case '-':
-			console.log(theGame.subtract());
+			if(guessInput.value === theGame.subtract()){
+				console.log(theGame.subtract());
+			}else{
+				messageBox.innerHTML = "Wrong";
+			}
 			break;
 		case '*':
-			console.log(theGame.multiply());
+			if(guessInput.value === theGame.multiply()){
+				console.log(theGame.multiply());
+			}else{
+				messageBox.innerHTML = "Wrong";
+			}
 			break;
 		case '/':
-			console.log(theGame.divide());
+			if(guessInput.value === theGame.divide()){
+				console.log(theGame.divide());
+			}else{
+				messageBox.innerHTML = "Wrong";
+			}
 			break;
 	}
-
-	theGame.refreshGame();
+		theGame.refreshGame();
 }
 
 function submitName()
