@@ -4,7 +4,7 @@ const num1 = document.querySelector('#num1');
 const num2 = document.querySelector('#num2');
 const operand = document.querySelector('#operand');
 const scoreboard = document.querySelector('#scoreboard');
-const guess = document.querySelector('#guessInput');
+const guessInput = document.querySelector('#guessInput');
 const submitBtn = document.querySelector('#submitBtn');
 const skipBtn = document.querySelector('#skipBtn');
 const resetBtn = document.querySelector('#resetBtn');
@@ -15,6 +15,10 @@ const gameBoard = document.querySelector('#gameboard');
 const nameSelection = document.querySelector('#nameSelection');
 const nameBox = document.querySelector('#nameBox');
 const submitNameBtn = document.querySelector('#submitName');
+let adding = RandomEquationGame.prototype.add;
+let mul = RandomEquationGame.prototype.multiply;
+let div = RandomEquationGame.prototype.divide;
+let sub = RandomEquationGame.prototype.subtract;
 
 //Helper methods
 function randomInt(max)
@@ -24,6 +28,7 @@ function randomInt(max)
 
 function hideGameBoard()
 {
+	FName.focus();
 	gameBoard.style.visibility ='hidden';
 }
 hideGameBoard();
@@ -35,10 +40,24 @@ function skip()
 
 function reset()
 {
+	//reload the page to start over again.
+	location.reload();
 }
 
 function submitAnswer()
 {
+	let adding = new RandomEquationGame();
+	let mul = new RandomEquationGame();
+	let div = new RandomEquationGame();
+	let sub = new RandomEquationGame();
+	if(guessInput.value === adding || guessInput.value === sub || guessInput.value === mul || guessInput.value === div){
+			return console.log("it works");
+			
+		}else{
+			return console.log("nope");
+		}
+		
+
 }
 
 function submitName()
@@ -46,7 +65,9 @@ function submitName()
 	gameBoard.style.visibility ='visible';
 	nameSelection.parentNode.removeChild(nameSelection);
 	new RandomEquationGame(fName.value, lName.value);
+
 }
+
 
 //Event bindings
 skipBtn.onclick = skip;
