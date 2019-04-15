@@ -24,6 +24,7 @@ function randomInt(max)
 
 function hideGameBoard()
 {
+	FName.focus();
 	gameBoard.style.visibility ='hidden';
 }
 hideGameBoard();
@@ -35,6 +36,8 @@ function skip()
 
 function reset()
 {
+	//reload the page to start over again.
+	location.reload();
 }
 
 function submitAnswer()
