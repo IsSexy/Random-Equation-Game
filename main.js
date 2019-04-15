@@ -17,53 +17,71 @@ const nameBox = document.querySelector('#nameBox');
 const submitNameBtn = document.querySelector('#submitName');
 let theGame = null;
 
-//Check localStorage for game info
-if(localStorage.getItem('playerName') !== null)
-{
-	gameBoard.style.visibility = 'visible';
-	nameSelection.parentNode.removeChild(nameSelection);
-	theGame = new RandomEquationGame();
-	scoreboard.innerHTML = localStorage.getItem('playerScore');
-}
-else
-{
-	FName.focus();
-	gameBoard.style.visibility ='hidden';
-}
-
 //Helper methods
 function randomInt(max)
 {
 	return Math.floor(Math.random() * Math.floor(max));
 }
 
+function hideGameBoard()
+{
+	FName.focus();
+	gameBoard.style.visibility ='hidden';
+}
+hideGameBoard();
+
 //Event functions
 function skip()
 {
-	theGame.refreshGame();
 }
 
 function reset()
 {
-	localStorage.clear();
 	//reload the page to start over again.
 	location.reload();
 }
 
 function submitAnswer()
 {
-	if(isNaN(guessInput.value))
+	guessInput.focus();
+	let theOperand = operand.innerHTML;
+	switch(theOperand)
 	{
-		messageBox.innerHTML = 'Please enter a number';
-		return;
+		case '+':
+			if(guessInput.value === theGame.add()){
+			console.log(theGame.add());
+			}else{
+				messageBox.innerHTML = "wrong";
+			}
+			break;
+		case '-':
+			if(guessInput.value === theGame.subtract()){
+				console.log(theGame.subtract());
+			}else{
+				messageBox.innerHTML = "Wrong";
+			}
+			break;
+		case '*':
+			if(guessInput.value === theGame.multiply()){
+				console.log(theGame.multiply());
+			}else{
+				messageBox.innerHTML = "Wrong";
+			}
+			break;
+		case '/':
+			if(guessInput.value === theGame.divide()){
+				console.log(theGame.divide());
+			}else{
+				messageBox.innerHTML = "Wrong";
+			}
+			break;
 	}
-
-	theGame.evaluate(Number(guessInput.value));
+		theGame.refreshGame();
 }
 
 function submitName()
 {
-	gameBoard.style.visibility = 'visible';
+	gameBoard.style.visibility ='visible';
 	nameSelection.parentNode.removeChild(nameSelection);
 	theGame = new RandomEquationGame(fName.value, lName.value);
 }
@@ -76,39 +94,19 @@ submitBtn.onclick = submitAnswer;
 submitNameBtn.onclick = submitName;
 
 //Initializing RandomEquationGame constructor and prototype methods.
-function RandomEquationGame()
+function RandomEquationGame(first, last)
 {
-	if(arguments.length === 2)
-	{
-		this.playerName = arguments[0] + " " + arguments[1];
-		localStorage.setItem('playerName', this.playerName);
-		this.score = 0;
-		localStorage.setItem('playerScore', this.score);
-		this.totalGuesses = 0;
-		localStorage.setItem('totalGuesses', this.totalGuesses);
-		this.operands = ['+', '-', '*', '/'];
-		nameBox.innerHTML = this.playerName;
-		this.beginGame();
-	}
-	else
-	{
-		this.playerName = localStorage.getItem('playerName');
-		this.score = Number(localStorage.getItem('playerScore'));
-		this.totalGuesses = Number(localStorage.getItem('totalGuesses'));
-		this.num1 = Number(localStorage.getItem('num1'));
-		this.num2 = Number(localStorage.getItem('num2'));
-		this.operands = ['+', '-', '*', '/'];
-		nameBox.innerHTML = this.playerName;
-		num1.innerHTML = localStorage.getItem('num1');
-		num2.innerHTML = localStorage.getItem('num2');
-		operand.innerHTML = localStorage.getItem('currentOperand');
-		messageBox.innerHTML = `Welcome back ${this.playerName}!`;
-	}
+	this.playerName = first + " " + last;
+	this.score = 0;
+	this.totalGuesses = 0;
+	this.operands = ['+', '-', '*', '/'];
+	nameBox.innerHTML = this.playerName;
+
+	this.beginGame();
 }
 
 RandomEquationGame.prototype.beginGame = function()
 {
-	messageBox.innerHTML = 'Good luck!';
 	this.refreshGame();
 }
 
@@ -132,54 +130,10 @@ RandomEquationGame.prototype.multiply = function()
 	return this.num1 * this.num2;
 }
 
-RandomEquationGame.prototype.evaluate = function(guess)
+RandomEquationGame.prototype.evaluate = function()
 {
-	let theOperand = operand.innerHTML;
-	let answer;
-	this.totalGuesses += 1;
-	localStorage.setItem('totalGuesses', this.totalGuesses);
 
-	switch(theOperand)
-	{
-		case '+':
-			console.log(theGame.add());
-			answer = theGame.add();
-			break;
-		case '-':
-			console.log(theGame.subtract());
-			answer = theGame.subtract();
-			break;
-		case '*':
-			console.log(theGame.multiply());
-			answer = theGame.multiply();
-			break;
-		case '/':
-			console.log(theGame.divide());
-			answer = theGame.divide();
-			break;
-	}
-
-	if(answer === guess)
-	{
-		this.score += 1;
-		localStorage.setItem('playerScore', this.score);
-		messageBox.innerHTML = `Congratulations, your guess of ${guess} was correct!`;
-		this.refreshGame();
-	}
-	else if(answer > guess)
-	{
-		this.score -= 1;
-		localStorage.setItem('playerScore', this.score);
-		messageBox.innerHTML = `Your guess of ${guess} was too low, try again!`;
-	}
-	else if(answer < guess)
-	{
-		this.score -= 1;
-		localStorage.setItem('playerScore', this.score);
-		messageBox.innerHTML = `Your guess of ${guess} was too high, try again!`;
-	}
-
-	scoreboard.innerHTML = this.score;
+	return true;
 }
 
 RandomEquationGame.prototype.refreshGame = function()
@@ -218,12 +172,7 @@ RandomEquationGame.prototype.refreshGame = function()
 			}
 			break;
 	}
-
-	localStorage.setItem('currentOperand', currentOperand);
-
-	localStorage.setItem('num1', this.num1);
 	num1.innerHTML = this.num1;
 	
-	localStorage.setItem('num2', this.num2);
 	num2.innerHTML = this.num2;
 }
